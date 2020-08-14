@@ -5,8 +5,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 // import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 // import SearchIcon from '@material-ui/icons/Search';
+import { Link, useHistory } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import MaterialLink from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -27,7 +31,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header(props) {
   const classes = useStyles();
-  const { sections, title } = props;
+  const history = useHistory();
+  const { sections } = props;
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <React.Fragment>
@@ -40,7 +54,7 @@ export default function Header(props) {
           noWrap
           className={classes.toolbarTitle}
         >
-          {title}
+          <Link to="/" style={{textDecoration: "none"}}>Daniel Lopez Photography</Link>
         </Typography>
         {/* <IconButton>
           <SearchIcon />
@@ -50,18 +64,42 @@ export default function Header(props) {
         </Button> */}
       </Toolbar>
       <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
-        {sections.map((section) => (
-          <Link
-            color="inherit"
-            noWrap
-            key={section.title}
-            variant="body2"
-            href={section.url}
-            className={classes.toolbarLink}
-          >
-            {section.title}
-          </Link>
-        ))}
+        {sections.map((section) => {
+          if (section.title === "Photography Portfolio") {
+            return (
+              <React.Fragment>
+                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                  {section.title}
+                </Button>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={() => {handleClose(); history.push("portraits")}} primaryText="Portraits">Portraits</MenuItem>
+                  <MenuItem onClick={() => {handleClose(); history.push("landscapes")}} primaryText="Landscapes">Landscapes</MenuItem>
+                  <MenuItem onClick={() => {handleClose(); history.push("street")}} primaryText="Street">Street</MenuItem>
+                </Menu>
+              </React.Fragment>
+            )
+          }
+          else {
+            return (
+              <MaterialLink
+                color="inherit"
+                noWrap
+                key={section.title}
+                variant="body2"
+                href={section.url}
+                className={classes.toolbarLink}
+              >
+                {section.title}
+              </MaterialLink>
+            )
+          }
+        })}
       </Toolbar>
     </React.Fragment>
   );
