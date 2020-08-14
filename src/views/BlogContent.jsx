@@ -112,10 +112,10 @@ export default class BlogContent extends React.Component {
             <Grid container spacing={5}>
             <Main title="Blogs posts and things" posts={this.state.posts} />
             <Sidebar
-                title={sidebar.title}
-                description={sidebar.description}
-                archives={sidebar.archives}
-                social={sidebar.social}
+              title={sidebar.title}
+              description={sidebar.description}
+              archives={sidebar.archives}
+              social={sidebar.social}
             />
             </Grid>
         </main>
