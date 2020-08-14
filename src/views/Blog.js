@@ -15,9 +15,10 @@ export default class Blog extends React.Component {
       blog1: "",
     }
     this.sections = [
+      { title: 'Blog', url: '/' },
       { title: 'Photography Portfolio', url: '#' },
-      { title: 'Blog', url: '#' },
-      { title: 'Contact', url: '#' },
+      { title: 'About Me', url: "about-me"},
+      { title: 'Contact', url: 'contact' },
     ];
   }
 
