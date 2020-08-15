@@ -77,6 +77,15 @@ export default function Header(props) {
                   keepMounted
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
+                  getContentAnchorEl={null}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left"
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left"
+                  }}
                 >
                   <MenuItem onClick={() => {handleClose(); history.push("portraits")}} primaryText="Portraits">Portraits</MenuItem>
                   <MenuItem onClick={() => {handleClose(); history.push("landscapes")}} primaryText="Landscapes">Landscapes</MenuItem>
