@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Typography from '@material-ui/core/Typography';
-import MaterialLink from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -96,7 +95,7 @@ export default function Header(props) {
           }
           else {
             return (
-              <MaterialLink
+              <Button
                 color="inherit"
                 noWrap
                 key={section.title}
@@ -105,7 +104,7 @@ export default function Header(props) {
                 className={classes.toolbarLink}
               >
                 {section.title}
-              </MaterialLink>
+              </Button>
             )
           }
         })}
