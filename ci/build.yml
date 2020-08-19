@@ -1,0 +1,81 @@
+---
+resource_types:
+  - name: kubernetes
+    type: docker-image
+    source:
+      repository: zlabjp/kubernetes-resource
+      tag: 1.16
+
+resources:
+  - name: danny-photo-site
+    type: git
+    check_every: 24h
+    webhook_token: ((concourse_token))
+    source:
+      private_key: ((github_token))
+      uri: git@github.com:dcl67/daniel-lopez-photography-site-react.git
+      branch: master
+      tag_filter: v*
+
+  - name: daniel-lopez-photography-site-image
+    type: docker-image
+    source:
+      repository: https://hub.docker.com/repository/docker/dannylopez1094/daniel-lopez-photography-site
+      username: ((docker_username))
+      password: ((docker_password))
+
+  - name: k8s
+    type: kubernetes
+    source:
+      server: https://server_host_here
+      namespace: daniel-lopez-photography-site
+      token: ((kubernetes_concourse_token))
+
+jobs:
+  - name: Build app image
+    serial: true
+    plan:
+      - get: daniel-lopez-photography-site-image
+        trigger: true
+
+      
+      # generate latest tag
+      - task: generate-git-tag
+        params:
+          TAG: latest
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: alpine
+
+          outputs:
+            - name: tag-file
+
+          params:
+            TAG:
+
+          run:
+            path: /bin/sh
+            args:
+              - -c
+              - |
+                echo "${TAG}" >> tag-file/tag.txt
+
+      - put: daniel-lopez-photography-site-image
+        params:
+          build: danny-photo-site
+          build_args:
+            CI_BUILD_ID: concourse-$BUILD_ID
+          cache: true
+          cache_tag: latest
+          tag_as_latest: true
+          tag_file: danny-photo-site/.git/ref
+
+      - put: k8s
+        params:
+          kubectl: |
+            patch deploy danny-photo-site -p '{"spec":{"template":{"metadata":{"labels":{"updated_at":"'$(date +%s)'"}}}}}'
+        wait_until_ready_selector: component=danny-photo-site
+        wait_until_ready: 300
