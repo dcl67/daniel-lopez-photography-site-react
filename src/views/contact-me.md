@@ -6,4 +6,4 @@ In his spare time, Danny is a freelance photographer which he pursues as a hobby
 
 For all inquiries, you can send an email in the link below, or access Danny at his socials to the right.
 
-[Compose email.](mailto:danny.lopez1094@gmail.com)
+[Email](mailto:danny.lopez1094@gmail.com)

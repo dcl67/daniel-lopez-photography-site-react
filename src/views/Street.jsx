@@ -27,11 +27,11 @@ export default class Street extends React.Component {
           “Seeing is not enough; you have to feel what you photograph” – Andre Kertesz          </p>
         </CardHeader>
         <CardBody>
-          <img src={image1} alt={"image1"} style={{zoom: `9%`}}/>
-          <img src={image4} alt={"image4"} style={{zoom: `9%`}}/>
-          <img src={image5} alt={"image5"} style={{zoom: `9%`}}/>
-          <img src={image6} alt={"image6"} style={{zoom: `9%`}}/>
-          <img src={image7} alt={"image7"} style={{zoom: `9%`}}/>
+          <img src={image1} alt={"image1"} style={{zoom: `18%`}}/>
+          <img src={image4} alt={"image4"} style={{zoom: `18%`}}/>
+          <img src={image5} alt={"image5"} style={{zoom: `18%`}}/>
+          <img src={image6} alt={"image6"} style={{zoom: `13%`}}/>
+          <img src={image7} alt={"image7"} style={{zoom: `22.5%`}}/>
         </CardBody>
         </Card>
       </div>

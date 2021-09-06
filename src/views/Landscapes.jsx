@@ -34,17 +34,17 @@ export default class Landscapes extends React.Component {
           </p>
         </CardHeader>
         <CardBody>
-          <img src={image1} alt={"image1"} style={{zoom: `9%`}}/>
-          <img src={image2} alt={"image2"} style={{zoom: `9%`}}/>
-          <img src={image3} alt={"image3"} style={{zoom: `9%`}}/>
-          <img src={image4} alt={"image4"} style={{zoom: `9%`}}/>
-          <img src={image5} alt={"image5"} style={{zoom: `9%`}}/>
-          <img src={image6} alt={"image6"} style={{zoom: `9%`}}/>
-          <img src={image7} alt={"image7"} style={{zoom: `9%`}}/>
-          <img src={image8} alt={"image8"} style={{zoom: `9%`}}/>
-          <img src={image12} alt={"image12"} style={{zoom: `9%`}}/>
-          <img src={image13} alt={"image13"} style={{zoom: `9%`}}/>
-          <img src={image14} alt={"image14"} style={{zoom: `9%`}}/>
+          <img src={image1} alt={"image1"} style={{zoom: `18%`}}/>
+          <img src={image2} alt={"image2"} style={{zoom: `18%`}}/>
+          <img src={image3} alt={"image3"} style={{zoom: `18%`}}/>
+          <img src={image4} alt={"image4"} style={{zoom: `18%`}}/>
+          <img src={image5} alt={"image5"} style={{zoom: `18%`}}/>
+          <img src={image6} alt={"image6"} style={{zoom: `18%`}}/>
+          <img src={image7} alt={"image7"} style={{zoom: `18%`}}/>
+          <img src={image8} alt={"image8"} style={{zoom: `18%`}}/>
+          <img src={image12} alt={"image12"} style={{zoom: `18%`}}/>
+          <img src={image13} alt={"image13"} style={{zoom: `18%`}}/>
+          <img src={image14} alt={"image14"} style={{zoom: `18%`}}/>
           <img src={image15} alt={"image15"} style={{zoom: `9%`}}/>
         </CardBody>
         </Card>

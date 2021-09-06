@@ -7,16 +7,16 @@ import Sidebar from '../components/Sidebar/Sidebar';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import post1 from './blog-post.1.md';
+import post1 from '../BlogPosts/blog-post.1.md';
 
 
 const mainFeaturedPost = {
     title: 'Welcome to my website!',
     description:
-      "This site is still fairly new, and under a lot of development, but this will become my photography portfolio with built in blog functionality.",
+      "This site is still fairly new and under a lot of development, but this will become my photography portfolio with a couple of blogs.",
     image: 'https://source.unsplash.com/random',
     imgText: 'main image description',
-    linkText: 'Continue reading…',
+    // linkText: 'Continue reading…',
   };
   
 const featuredPosts = [
@@ -41,7 +41,8 @@ const featuredPosts = [
 const sidebar = {
     title: 'About',
     description:
-      'Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.',
+      `Danny Lopez is a Computer Engineering alum from Drexel University. He received his Bachelor's of Science in Computer Engineering in June of 2018.
+      Danny is an aspiring software engineer, and, in his spare time, Danny works as a hobbyist/freelance photographer. Types of photography he is interested in include portraits landscapes, and street.`,
     archives: [
         { title: "To come at a later date...", url: "/"}
     //   { title: 'March 2020', url: '#' },
@@ -110,7 +111,7 @@ export default class BlogContent extends React.Component {
             ))}
             </Grid>
             <Grid container spacing={5}>
-            <Main title="Blogs posts and things" posts={this.state.posts} />
+            <Main title="Blog posts and things" posts={this.state.posts} />
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
